@@ -1,4 +1,4 @@
-const { db } = require('./config')
+const { sequelize } = require('./config')
 const { User, Deck, Card, Attack } = require('../models')
 
 function randInt(a, b) {
@@ -6,7 +6,7 @@ function randInt(a, b) {
 }
 
 async function seed() {
-  await db.sync({ force: true })
+  await sequelize.sync({ force: true })
 
   const users = await User.bulkCreate([
     { username: 'v1per' },
